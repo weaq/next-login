@@ -1,9 +1,13 @@
 # next-login
 sign in with node-login api
 
-npm install
+##### NEXTAUTH_SECRET
+$ openssl rand -base64 32
 
-npm run dev
+##### Development
+$ npm install
+
+$ npm run dev
 
 # Server
 https://github.com/weaq/node-login
