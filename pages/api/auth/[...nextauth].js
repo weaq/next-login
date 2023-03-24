@@ -22,7 +22,7 @@ export default NextAuth({
         const data = await res.json()
 
         if (data.status == 'ok') {
-          return data.user
+          return data
         }
 
         // Return null if user data could not be retrieved
