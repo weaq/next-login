@@ -1,20 +1,27 @@
 import { useSession, signIn, signOut } from "next-auth/react"
+import LoadingPage from '/components/LoadingPage';
+
 export default function Component() {
-  const { data: session } = useSession()
-  if (session) {
-    console.log(session.accessToken)
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        {session.user.fname} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    )
-  }
+  const { data: session, status } = useSession()
+  const loading = status === "loading"
+
+  //console.log(session)
+
   return (
     <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      {loading && <LoadingPage />}
+      {session &&
+        <>
+          <button onClick={() => signOut()}>Sign out</button>
+          <p style={{ marginBottom: '10px' }}> Welcome, {session.user.user.fname ?? session.user.user.email}</p> <br />
+        </>
+      }
+      {!session &&
+        <>
+          <button onClick={() => signIn()}>Sign in</button>
+        </>
+      }
+
     </>
   )
 }
