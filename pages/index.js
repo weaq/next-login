@@ -13,7 +13,7 @@ export default function Component() {
       {session &&
         <>
           <button onClick={() => signOut()}>Sign out</button>
-          <p style={{ marginBottom: '10px' }}> Welcome, {session.user.user.fname ?? session.user.user.email}</p> <br />
+          <p style={{ marginBottom: '10px' }}> Welcome, {session.user.fname ?? session.user.email}</p> <br />
         </>
       }
       {!session &&
