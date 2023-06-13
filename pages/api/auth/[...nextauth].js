@@ -14,7 +14,7 @@ export default NextAuth({
       },
       async authorize(credentials, req) {
 
-        const res = await fetch("http://localhost:3333/login", {
+        const res = await fetch(`${process.env.API_MEMBER_DB}login`, {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" }
@@ -50,7 +50,8 @@ export default NextAuth({
         //console.log(profile)
         //return profile.email_verified && profile.email.endsWith("@example.com")
         const response = await fetch(
-          "http://localhost:3333/userExists",
+          `${process.env.API_MEMBER_DB}userExists`
+        ,
           {
             method: 'POST',
             headers: {

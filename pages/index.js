@@ -5,7 +5,7 @@ export default function Component() {
   const { data: session, status } = useSession()
   const loading = status === "loading"
 
-  //console.log(session)
+  console.log(session)
 
   return (
     <>
@@ -14,6 +14,7 @@ export default function Component() {
         <>
           <button onClick={() => signOut()}>Sign out</button>
           <p style={{ marginBottom: '10px' }}> Welcome, {session.user.fname ?? session.user.email}</p> <br />
+          <p>{session.accessToken}</p>
         </>
       }
       {!session &&
